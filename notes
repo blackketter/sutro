@@ -1,0 +1,13 @@
+Setup Notes
+-----------
+
+Add:
+ export PATH=$PATH:~/sutro
+to your .bashrc
+
+add to crontab -e:
+
+* * * * * /home/pi/sutro/snapshot.sh 2>&1
+* * * * * sleep 30;/home/pi/sutro/snapshot.sh 2>&1
+
+
