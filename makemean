@@ -1,0 +1,6 @@
+#!/bin/bash
+TZ='America/Los_Angeles'; export TZ
+DAY=$1
+PHOTOSPREFIX=.
+echo "Making mean ${DAY}"
+convert -evaluate-sequence mean ${PHOTOSPREFIX}/stills/${DAY}/$DAY???00?.jpg ${PHOTOSPREFIX}/mean/${DAY}-mean.jpg

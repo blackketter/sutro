@@ -1,0 +1,30 @@
+#!/bin/bash
+LAPSEPREFIX=.
+SIZE=160x90
+SMALLPREFIX=${LAPSEPREFIX}/${SIZE}
+YEARGRIDPREFIX=${LAPSEPREFIX}/yeargrid
+
+cd ${LAPSEPREFIX}
+
+for (( h=0;h<24;h++)); do
+  for (( m=0;m<60;m++)); do
+    for s in "0" "3"; do
+      TIME="$(printf "%02d%02d%01d" ${h} ${m} ${s})"
+      GRIDFILEPREFIX=${YEARGRIDPREFIX}/yeargrid-${TIME}
+      GRIDFILE=${GRIDFILEPREFIX}.jpg
+
+
+      if [ -e ${GRIDFILE} ]; then
+        echo "Grid file exists: ${GRIDFILE}"
+      else
+        echo "Making ${YEARGRIDPREFIX}/yeargrid-${TIME}.jpg"
+        montage ${SMALLPREFIX}/20*/20??????${TIME}?.png -geometry 160x90 -tile 18x20 ${GRIDFILE}
+        # only keep the first one
+        mv ${GRIDFILEPREFIX}-0.jpg ${GRIDFILE}
+        rm ${GRIDFILEPREFIX}-*.jpg
+      fi
+    done
+  done
+done
+
+

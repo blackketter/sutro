@@ -1,0 +1,20 @@
+#!/bin/bash
+TZ='America/Los_Angeles'; export TZ
+DAY=$1
+
+if [ $# -eq 1 ]; then
+  DAY=$1
+else
+  DAY=20*
+fi
+
+for daypath in ${DAY}
+do
+  GRIDFILE=daygrid/${daypath}-biggrid.jpg
+  if [ -e ${GRIDFILE} ]; then
+      echo "Skipping big day grid ${GRIDFILE}, it already exists"
+  else
+     echo "Making big day grid ${GRIDFILE}"
+     montage ${daypath}/*.png -geometry 160x90 -tile 24x24 ${GRIDFILE}
+  fi
+done

@@ -1,0 +1,19 @@
+#!/bin/bash
+TZ='America/Los_Angeles'; export TZ
+DAY=$1
+PHOTOSPREFIX=.
+
+cd ${PHOTOSPREFIX}
+
+#find ${PHOTOSPREFIX}/stills/${DAY}/ | grep .jpg |  sort > ${DAY}.txt
+
+OUTFILE=${PHOTOSPREFIX}/videos/days/${DAY}
+
+echo "Making video of ${DAY}"
+ffmpeg -v warning -f image2 -framerate 30 -pattern_type glob -i ${PHOTOSPREFIX}/stills/${DAY}/'*.jpg' ${OUTFILE}.mp4
+
+#mencoder "mf://@${DAY}.txt" -quiet -mf fps=30:type=jpg -ovc x264  -o ${OUTFILE}.avi
+echo "Done making ${OUTFILE}"
+
+#avconv -i ${OUTFILE}.avi -codec copy ${OUTFILE}.mp4
+#rm ${OUTFILE}.avi

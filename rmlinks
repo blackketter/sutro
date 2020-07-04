@@ -1,0 +1,24 @@
+#!/bin/bash
+LAPSEPREFIX=.
+STILLSPREFIX=${LAPSEPREFIX}/stills
+SMALLPREFIX=${LAPSEPREFIX}/${SIZE}
+
+if [ $# -eq 1 ]; then
+  DAY=$1
+else
+  DAY=20*
+fi
+
+for daypath in ${STILLSPREFIX}/${DAY}
+do
+  day=${daypath##*/}
+  for image in ${daypath}/*.jpg
+  do
+    if [ -L ${image} ]; then
+      echo "removing symlink: ${image}"
+      rm ${image}
+#    else
+#      echo "file: ${image}"
+    fi
+  done
+done

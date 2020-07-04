@@ -1,0 +1,48 @@
+#!/bin/bash
+
+if [ $# -eq 1 ]; then
+  DAYPARAM=$1
+else
+  DAYPARAM=201[5-6][0-1][0-9][0-3][0-9]
+fi
+
+for DAY in ${DAYPARAM}
+#201[5-6][0-1][0-9][0-3][0-9]
+do
+  echo "Looking in ${DAY}"
+  for (( h=0;h<24;h++)); do
+    for (( m=0;m<60;m++)); do
+      for s in "0" "3"; do
+
+        IMG="$(printf "stills/${DAY}/${DAY}%02d%02d%01d" ${h} ${m} ${s})"
+        #printf "."
+        FIRST="1"
+
+        for MULT in $( ls ${IMG}?.jpg )
+        do
+          #echo "Checking ${MULT}"
+          if [ ${FIRST} = "1" ]; then
+            if [ ! -s ${MULT} ]; then
+              echo "removing zero size ${MULT}"
+              rm ${MULT}
+            else
+              FIRST="0"
+              LASTFOUND=${IMG}
+            fi
+          else
+            echo "removing duplicate ${MULT}"
+            rm ${MULT}
+          fi
+        done
+
+        if [ ! -e ${IMG}[0-3].jpg ]; then
+          echo "missing ${IMG}, last found ${LASTFOUND}, linking"
+          `ln -s ${LASTFOUND}?.jpg ${IMG}1.jpg`
+		else
+		  LASTFOUND=${IMG}
+        fi
+      done
+    done
+  done
+done
+

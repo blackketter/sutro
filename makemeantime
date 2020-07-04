@@ -1,0 +1,19 @@
+#!/bin/bash
+TZ='America/Los_Angeles'; export TZ
+
+PHOTOSPREFIX=.
+
+for (( h=0;h<24;h++)); do
+  for (( m=0;m<60;m++)); do
+    for s in "0" "3"; do
+      TIME="$(printf "%02d%02d%01d" ${h} ${m} ${s})"
+      OUTFILE=${PHOTOSPREFIX}/meantimes/${TIME}-mean.jpg
+      echo "Making mean ${TIME}: ${OUTFILE}"
+      if [ ! -e ${OUTFILE} ]; then
+        convert -evaluate-sequence mean ${PHOTOSPREFIX}/stills/*/*${TIME}?.jpg ${OUTFILE}
+      else
+        echo "Skipping existing ${OUTFILE}"
+      fi
+    done
+  done
+done

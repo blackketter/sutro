@@ -1,0 +1,12 @@
+#!/bin/bash
+TZ='America/Los_Angeles'; export TZ
+PHOTOSPREFIX=.
+VIDEOS=${PHOTOSPREFIX}/videos
+cd ${PHOTOSPREFIX}
+
+find ${PHOTOSPREFIX}/mean/* | grep .jpg |  sort > mean.txt
+
+mencoder "mf://@mean.txt" -mf fps=30:type=jpg -ovc x264  -o ${VIDEOS}/meanlapse.avi
+avconv -i ${VIDEOS}/meanlapse.avi -codec copy ${VIDEOS}/meanlapse.mp4
+rm meanlapse.txt
+rm ${VIDEOS}/meanlapse.avi

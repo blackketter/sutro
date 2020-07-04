@@ -1,0 +1,25 @@
+#!/bin/bash
+TZ='America/Los_Angeles'; export TZ
+DAY=$1
+PHOTOSPREFIX=.
+
+
+if [ $# -eq 1 ]; then
+  DAY=$1
+else
+  DAY=20*
+fi
+
+
+cd ${PHOTOSPREFIX}/stills
+
+for daypath in ${DAY}
+do
+  GRIDFILE=${PHOTOSPREFIX}/daygrid/${daypath}-highgrid.jpg
+  if [ -e ${GRIDFILE} ]; then
+      echo "skipping day grid ${GRIDFILE}"
+  else
+     echo "Making day grid ${GRIDFILE}"
+     montage -verbose ${daypath}/*00?.jpg -geometry 480x270 -tile 12x12 ${GRIDFILE}
+  fi
+done

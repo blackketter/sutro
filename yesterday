@@ -1,0 +1,23 @@
+#!/bin/bash
+TZ='America/Los_Angeles'; export TZ
+YESTERDAY=$(date +"%Y%m%d" --date=yesterday)
+
+date
+echo "Fixing days..."
+scripts/fixdays ${YESTERDAY}
+
+echo "Making day video..."
+scripts/makedayvideo ${YESTERDAY}
+ln -f -s videos/days/${YESTERDAY}.mp4 yesterday.mp4
+
+echo "Making mean image..."
+scripts/makemean ${YESTERDAY}
+ln -f -s mean/${YESTERDAY}-mean.jpg yesterday-mean.jpg
+
+echo "Making small images..."
+scripts/makesmall ${YESTERDAY}
+
+echo "Making day grid..."
+scripts/makedaygrid ${YESTERDAY}
+ln -f -s daygrid/${YESTERDAY}-grid.jpg yesterday-grid.jpg
+date

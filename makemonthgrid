@@ -1,0 +1,18 @@
+#!/bin/bash
+TZ='America/Los_Angeles'; export TZ
+MONTH=$1
+TIME=$2
+PHOTOSPREFIX=.
+
+cd ${PHOTOSPREFIX}/160x90
+
+  GRIDDIR=${PHOTOSPREFIX}/monthgrid/${MONTH}
+  GRIDFILE=${GRIDDIR}/${MONTH}-${TIME}-grid.jpg
+  mkdir ${GRIDDIR}
+  if [ -e ${GRIDFILE} ]; then
+    echo "skipping month grid ${GRIDFILE}"
+  else
+    echo "Making month grid ${GRIDFILE}"
+    montage -verbose ${MONTH}*/${MONTH}*${TIME}?.png -geometry 160x90 -tile 6x5 ${GRIDFILE}
+#     montage -verbose ${daypath}/*00?.png -geometry 160x90 -tile 12x12 ${GRIDFILE}
+  fi
