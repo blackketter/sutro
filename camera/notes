@@ -2,8 +2,9 @@ Setup Notes
 -----------
 
 Add:
- export PATH=$PATH:~/sutro
-to your .bashrc
+ - add to your .bashrc:
+	export PATH=$PATH:~/sutro
+ - create /var/www/html/lapse and make it writable by the user
 
 add to crontab -e:
 
