@@ -20,4 +20,8 @@ scripts/makesmall ${YESTERDAY}
 echo "Making day grid..."
 scripts/makedaygrid ${YESTERDAY}
 ln -f -s daygrid/${YESTERDAY}-grid.jpg yesterday-grid.jpg
+
+echo "Removing yesterday medium..."
+rm -r medium/${YESTERDAY}
+
 date

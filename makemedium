@@ -1,8 +1,7 @@
 #!/bin/bash
 LAPSEPREFIX=.
-SIZE=160x90
 STILLSPREFIX=${LAPSEPREFIX}/stills
-SMALLPREFIX=${LAPSEPREFIX}/${SIZE}
+SMALLPREFIX=${LAPSEPREFIX}/medium
 
 if [ $# -eq 1 ]; then
   DAY=$1
@@ -18,10 +17,10 @@ do
   for image in ${daypath}/*.jpg
   do
     imageroot=${image##*/}
-    small=${smalldaypath}/${imageroot%.*}.png
+    small=${smalldaypath}/${imageroot%.*}.jpg
     if [ ! -e ${small} ]; then
-#      echo "convert -resize ${SIZE} -depth 24 ${image} ${small}"
-      convert -resize ${SIZE} -depth 24 ${image} ${small}
+      echo "convert -resize 50% -quality 70 ${image} ${small}"
+      convert -resize 50% -quality 70 ${image} ${small}
 #    else
 #     echo "${small} exists"
     fi
