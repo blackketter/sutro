@@ -9,7 +9,7 @@
 	a:link { color:#33c; }
 	a:visited { color:#339; }
 	p { color:#888; }
-
+    button { color:#888; background-color:#222; }
 	/* so linked image won't have border */
 	a img { border:none; }
 </style>
@@ -48,18 +48,18 @@
 ?>
 
 <body>
-<p>Latest:
+<div class="menu">
+	<p>Latest:
+    <button onclick="displayCurrent()" id="current" class="active">image</button>
+    <button onclick="startLong()" id="longloop">hour</button>
+    <div id="timestamp"></div>
+</div>
 <div class="body">
     <div id="current-image">
 			<a href="http://zerow.local/lapse/latest.jpg"><img src="http://zerow.local/lapse/latest.jpg" width="100%"></a>
     </div>
     <div id="image-animation">
     </div>
-</div>
-<div class="menu">
-    <button onclick="displayCurrent()" id="current" class="active">Latest image</button>
-    <button onclick="startLong()" id="longloop">Loop latest hour</button>
-    <div id="timestamp"></div>
 </div>
 
 <script>
@@ -137,7 +137,7 @@
             container.removeChild(container.firstChild);
         }
     }
-
+	startLong();
 
 </script>
 <p>Yesterday: <a href="yesterday.log">(log)</a>
