@@ -20,7 +20,7 @@
 	$root = $root . date('Ymd');
   $filter = "/(\.gif|\.jpg|\.jpeg|\.png)$/";
   $imagecount = 120;
-	
+
 	if ( $root_dir = @opendir($root) ) {
 			while ( false !== ($img_file = readdir($root_dir)) ) {
 						if ( preg_match($filter, $img_file) ) {
@@ -31,8 +31,9 @@
 			closedir($root_dir);
 	}
 	sort($images);
+	sort($dates);
 	$images = array_slice($images, -$imagecount);
-
+    $dates = array_slice($dates, -$imagecount);
 	function printImages() {
 		global $images;
 		foreach ($images as $image) {
@@ -49,9 +50,11 @@
 
 <body>
 <div class="menu">
-	<p>Latest:
-    <button onclick="displayCurrent()" id="current" class="active">image</button>
-    <button onclick="startLong()" id="longloop">hour</button>
+	<p>
+    <button onclick="displayCurrent()" id="current" class="active">Latest</button>
+    <button onclick="startLong()" id="longloop">Stop</button>
+    <button onclick="prevLong()" id="prev">Prev</button>
+    <button onclick="nextLong()" id="next">Next</button>
     <div id="timestamp"></div>
 </div>
 <div class="body">
@@ -80,15 +83,17 @@
 
     function startLong() {
         if (document.getElementById('longloop').className === "active") {
-            clearInterval(running_animation);
-            document.getElementById('longloop').className = "paused";
+            stopLong();
         } else if (document.getElementById('longloop').className === "paused") {
             document.getElementById('longloop').className = "active";
             startAnimation(long_list, long_list_dates);
+            document.getElementById('longloop').innerHTML = "Stop";
         } else {
             displayCurrent();
             document.getElementById('longloop').className = "active";
             document.getElementById('current').className = "";
+            document.getElementById('longloop').innerHTML = "Stop";
+
             setupAnimation(long_list, long_list_dates);
             startAnimation(long_list, long_list_dates);
         }
@@ -124,6 +129,36 @@
         }
 
         running_animation = setInterval(iterate, 100);
+    }
+
+    function stopLong() {
+            clearInterval(running_animation);
+            document.getElementById('longloop').className = "paused";
+            document.getElementById('longloop').innerHTML = "Start";
+    }
+    function prevLong() {
+            stopLong()
+            img_list[iterator].style.display = 'none';
+            iterator--;
+
+            if (iterator < 0) {
+                iterator = long_list_dates.length - 1;
+            }
+
+            img_list[iterator].style.display = 'block';
+            document.getElementById('timestamp').innerHTML = long_list_dates[iterator];
+    }
+    function nextLong() {
+            stopLong()
+            img_list[iterator].style.display = 'none';
+            iterator++;
+
+            if (iterator >= long_list_dates.length) {
+                iterator = 0;
+            }
+
+            img_list[iterator].style.display = 'block';
+            document.getElementById('timestamp').innerHTML = long_list_dates[iterator];
     }
 
     function displayCurrent() {
