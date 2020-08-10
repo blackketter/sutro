@@ -2,5 +2,5 @@
 TZ='America/Los_Angeles'; export TZ
 DAY=$1
 PHOTOSPREFIX=.
-echo "Making mean ${DAY} from images every half hour"
-convert -evaluate-sequence mean ${PHOTOSPREFIX}/stills/${DAY}/$DAY*[03]00[0-9].jpg ${PHOTOSPREFIX}/mean/${DAY}-mean.jpg
+echo "Making mean ${DAY} from images every hour"
+convert -evaluate-sequence mean ${PHOTOSPREFIX}/stills/${DAY}/$DAY*000[0-9].jpg ${PHOTOSPREFIX}/mean/${DAY}-mean.jpg
