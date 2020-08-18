@@ -162,7 +162,7 @@
     }
 
     function displayCurrent() {
-        clearInterval(running_animation);
+        stopLong();
         iterator = 0;
         document.getElementById('timestamp').innerHTML = "";// current_date;
         document.getElementById('current-image').style.display = 'block';
