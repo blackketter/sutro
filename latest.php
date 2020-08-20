@@ -59,7 +59,7 @@
 </div>
 <div class="body">
     <div id="current-image">
-			<a href="http://zerow.local/lapse/latest.jpg"><img src="http://zerow.local/lapse/latest.jpg" width="100%"></a>
+			<a href="http://zerow.local/lapse/latest.html"><img src="http://zerow.local/lapse/latest.jpg" width="100%"></a>
     </div>
     <div id="image-animation">
     </div>
