@@ -12,6 +12,7 @@
     button { color:#888; background-color:#222; }
 	/* so linked image won't have border */
 	a img { border:none; }
+	anim { width: 100px; }
 </style>
 </head>
 
@@ -61,7 +62,7 @@
     <div id="current-image">
 			<a href="http://zerow.local/lapse/latest.html"><img src="http://zerow.local/lapse/latest.jpg" width="100%"></a>
     </div>
-    <div id="image-animation">
+    <div id="image-animation" class="anim">
     </div>
 </div>
 
@@ -137,6 +138,7 @@
             document.getElementById('longloop').innerHTML = "Start";
     }
     function prevLong() {
+            startLong();
             stopLong()
             img_list[iterator].style.display = 'none';
             iterator--;
@@ -149,6 +151,7 @@
             document.getElementById('timestamp').innerHTML = long_list_dates[iterator];
     }
     function nextLong() {
+            startLong();
             stopLong()
             img_list[iterator].style.display = 'none';
             iterator++;
@@ -159,6 +162,7 @@
 
             img_list[iterator].style.display = 'block';
             document.getElementById('timestamp').innerHTML = long_list_dates[iterator];
+			
     }
 
     function displayCurrent() {

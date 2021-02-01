@@ -11,6 +11,11 @@ fi
 for daypath in ${DAY}
 do
   GRIDFILE=daygrid/${daypath}-grid.jpg
+  if [ $DAY -eq $1 ]; then
+  	 rm ${GRIDFILE}
+  	 echo "Removed existing ${GRIDFILE}"
+  fi
+  
   if [ -e ${GRIDFILE} ]; then
       echo "Skipping day grid ${GRIDFILE}, it already exists"
   else

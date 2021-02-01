@@ -10,11 +10,21 @@ for DAY in ${DAYPARAM}
 #201[5-6][0-1][0-9][0-3][0-9]
 do
   echo "Looking in ${DAY}"
+  echo "Deleting old symlinks..."
+  find stills/${DAY} -type l -delete
+  echo " "
+#  echo "Renaming to *30..."
+#  rename -d -v 's/[23.][0-9]\.jpg/30.jpg/' stills/${DAY}/*
+#  echo "Renaming to *00..."
+#  rename -d -v 's/0[0-9]\.jpg/00.jpg/' stills/${DAY}/*
+  echo "looking for missing files..."  
   for (( h=0;h<24;h++)); do
+  	echo " hour ${h}..."
     for (( m=0;m<60;m++)); do
       for s in "0" "3"; do
 
         IMG="$(printf "stills/${DAY}/${DAY}%02d%02d%01d" ${h} ${m} ${s})"
+                      REL="$(printf "${DAY}%02d%02d%01d" ${h} ${m} ${s})"
         #printf "."
         FIRST="1"
 
@@ -27,7 +37,7 @@ do
               rm ${MULT}
             else
               FIRST="0"
-              LASTFOUND=${IMG}
+              LASTFOUND=${REL}
             fi
           else
             echo "removing duplicate ${MULT}"
@@ -35,11 +45,11 @@ do
           fi
         done
 
-        if [ ! -e ${IMG}[0-3].jpg ]; then
-          echo "missing ${IMG}, last found ${LASTFOUND}, linking"
+        if [ ! -e ${IMG}[0-9].jpg ]; then
+          echo "missing ${IMG}, last found ${LASTFOUND}, linking to ${IMG}1.jpg"
           `ln -s ${LASTFOUND}?.jpg ${IMG}1.jpg`
 		else
-		  LASTFOUND=${IMG}
+		  LASTFOUND=${REL}
         fi
       done
     done
