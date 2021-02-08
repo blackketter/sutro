@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Latest Sutro Lapse Images</title>
+<title>Sutrocam</title>
 <style type="text/css">
 	body { background-color: black; color:#888; font: 14px/1.3 verdana, arial, helvetica, sans-serif; }
 	h1 { font-size:1.3em; }
