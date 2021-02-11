@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Latest Sutro Lapse Images</title>
+<title>Sutrocam 2021</title>
 <style type="text/css">
 	body { background-color: black; color:#888; font: 14px/1.3 verdana, arial, helvetica, sans-serif; }
 	h1 { font-size:1.3em; }
 	h2 { font-size:1.2em; }
-	a:link { color:#33c; }
-	a:visited { color:#339; }
+	a:link { color:#c33; }
+	a:visited { color:#933; }
 	p { color:#888; }
     button { color:#888; background-color:#222; }
 	/* so linked image won't have border */
@@ -51,16 +51,23 @@
 
 <body>
 <div class="menu">
-	<p>
+<div style="float:left;text-align:left;width:50%">
     <button onclick="displayCurrent()" id="current" class="active">Latest</button>
     <button onclick="startLong()" id="longloop">Stop</button>
     <button onclick="prevLong()" id="prev">Prev</button>
     <button onclick="nextLong()" id="next">Next</button>
-    <div id="timestamp"></div>
 </div>
+
+<div style="float:right;text-align:right;width:50%">
+	<a href=".">index</a>
+</div>
+</div>
+<p></p>
 <div class="body">
-    <div id="current-image">
-			<a href="http://zerow.local/lapse/latest.html"><img src="http://zerow.local/lapse/latest.jpg" width="100%"></a>
+<div>&nbsp;</div>
+<div id="timestamp"></div>
+	    <div id="current-image">
+			<a href="http://sutrocam.local/lapse/latest.html"><img src="http://sutrocam.local/lapse/latest.jpg" width="100%"></a>
     </div>
     <div id="image-animation" class="anim">
     </div>
