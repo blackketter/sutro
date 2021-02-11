@@ -12,7 +12,7 @@ mkdir -p ${PHOTOSPREFIX}/${TODAY}
 JPG=${TODAY}/${TODAY}${TIME}
 LATEST=${PHOTOSPREFIX}/latest.jpg
 
-raspistill -t 1000 -ex night -ifx denoise -q 100 -h 1080 -w 1920  -n -o ${PHOTOSPREFIX}/${JPG}.jpg
+raspistill -t 5000 -ex night -mm spot -ifx denoise -q 15 -h 1080 -w 1920  -o ${PHOTOSPREFIX}/${JPG}.jpg
 #raspistill -t 1000 -ex night -mm average -ISO 100 -ifx denoise -o ${PHOTOSPREFIX}/${JPG}.jpg
 #raspistill -mm matrix -drc high -st -q 100 -h 1080 -w 1920 --brightness 50 -ISO 100 -n -hf -vf -o ${PHOTOSPREFIX}/${JPG}.jpg 
 #~/raspistill-dean -t 50000 -mm matrix -drc high -st -q 100 -h 1080 -w 1920  --brightness 50 -ISO 100 -n -hf -vf --timelapse 5000 -v  -o ${PHOTOSPREFIX}/${JPG}%02d.jpg -l ${LATEST}
