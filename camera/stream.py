@@ -6,13 +6,15 @@ import io
 import picamera
 import logging
 import socketserver
+import socket
+
 from threading import Condition
 from http import server
 
 PAGE="""\
 <html>
 <head>
-<title>Raspberry Pi - Surveillance Camera</title>
+<title>Raspberry Pi - Camera</title>
 </head>
 <body>
 <center><h1>Raspberry Pi - Surveillance Camera</h1></center>
@@ -81,13 +83,16 @@ class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
     allow_reuse_address = True
     daemon_threads = True
 
+portnum = 8000
+print('Streaming from: http://' + socket.gethostname() + ':' + str(portnum))
+
 with picamera.PiCamera(resolution='1920x1080', framerate=2) as camera:
     output = StreamingOutput()
     #Uncomment the next line to change your Pi's Camera rotation (in degrees)
     #camera.rotation = 90
     camera.start_recording(output, format='mjpeg')
     try:
-        address = ('', 8000)
+        address = ('', portnum)
         server = StreamingServer(address, StreamingHandler)
         server.serve_forever()
     finally:
