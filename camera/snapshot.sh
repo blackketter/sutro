@@ -19,8 +19,8 @@ raspistill -t 5000 -ex night -mm spot -ifx denoise -q 15 -h 1080 -w 1920  -o ${P
 rm $LATEST
 cd ${PHOTOSPREFIX}
 ln -s ${JPG}.jpg $LATEST
-ln -s ${TODAY} latestday
-rm -f $PHOTOSPREFIX/${YESTERDAY}/${YESTERDAY}${TIME}*.jpg
-rmdir --ignore-fail-on-non-empty $PHOTOSPREFIX/${YESTERDAY}
+#ln -s ${TODAY} latestday
+#rm -f $PHOTOSPREFIX/${YESTERDAY}/${YESTERDAY}${TIME}*.jpg
+#rmdir --ignore-fail-on-non-empty $PHOTOSPREFIX/${YESTERDAY}
 rm -rf $PHOTOSPREFIX/${TWODAYSAGO}
 
