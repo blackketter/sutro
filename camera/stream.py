@@ -84,7 +84,7 @@ class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
     daemon_threads = True
 
 portnum = 8000
-print('Streaming from: http://' + socket.gethostname() + ':' + str(portnum))
+print('Streaming from: http://' + socket.getfqdn() + ':' + str(portnum))
 
 with picamera.PiCamera(resolution='1920x1080', framerate=2) as camera:
     output = StreamingOutput()

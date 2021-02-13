@@ -8,7 +8,5 @@ Add:
 
 add to crontab -e:
 
-* * * * * /home/pi/sutro/snapshot.sh 2>&1
-* * * * * sleep 30;/home/pi/sutro/snapshot.sh 2>&1
-
+* * * * * sutro/camera/lapse.sh >> lapse/lapse.log 2>&1
 
