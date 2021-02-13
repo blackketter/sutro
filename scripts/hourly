@@ -6,7 +6,7 @@ date
 echo $TODAY
 
 echo "Syncing..."
-rsync -axv sutrocam.local:/var/www/html/lapse/ /mnt/media/Projects/lapse-2021/stills/
+rsync -axvv ${1}:/var/www/html/lapse/ stills/
 
 echo "Making medium..."
 scripts/makemedium ${TODAY}
