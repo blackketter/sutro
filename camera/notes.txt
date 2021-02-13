@@ -8,5 +8,5 @@ Add:
 
 add to crontab -e:
 
-* * * * * sutro/camera/lapse.sh >> lapse/lapse.log 2>&1
+* * * * * cd sutro; camera/lapse.sh >> lapse.log 2>&1
 
