@@ -8,6 +8,9 @@ echo $TODAY
 echo "Syncing..."
 rsync -axvv ${1}:sutro/stills/ stills/
 
+echo "Linking..."
+ln -s stills/${TODAY}/`ls stills/${TODAY} | tail -n 1` latest.jpg
+
 echo "Making medium..."
 scripts/makemedium ${TODAY}
 
