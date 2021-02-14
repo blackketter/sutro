@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sutrocam 2021</title>
+<title>Sutrocam</title>
 <style type="text/css">
 	body { background-color: black; color:#888; font: 14px/1.3 verdana, arial, helvetica, sans-serif; }
 	h1 { font-size:1.3em; }
@@ -67,7 +67,7 @@
 <div>&nbsp;</div>
 <div id="timestamp"></div>
 	    <div id="current-image">
-			<a href="http://sutrocam.local/lapse/latest.html"><img src="http://sutrocam.local/lapse/latest.jpg" width="100%"></a>
+			<a href="http://sutrocam.local/sutro/latest.html"><img src="http://sutrocam.local/sutro/latest.jpg" width="100%"></a>
     </div>
     <div id="image-animation" class="anim">
     </div>
