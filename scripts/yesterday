@@ -3,8 +3,8 @@ TZ='America/Los_Angeles'; export TZ
 YESTERDAY=$(date +"%Y%m%d" --date=yesterday)
 
 date
-echo "Fixing days..."
-scripts/fixdays ${YESTERDAY}
+echo "NOT Fixing days..."
+#scripts/fixdays ${YESTERDAY}
 
 echo "Making day video..."
 scripts/makedayvideo ${YESTERDAY}
