@@ -1,7 +1,6 @@
 <HTML>
 <HEAD>
 <TITLE>Sutro</TITLE>
-<meta http-equiv="refresh" content="30" />
 </HEAD>
 <BODY bgcolor="black">
 <style>
@@ -15,7 +14,18 @@ max-height: 100%;
 max-width: 100%;
 }
 </style>
+
 <A  href="latest.jpg">
-<IMG src="latest.jpg" class="ctrd"/>
-</A></BODY>
+<IMG src="latest.jpg" id="myImage" class="ctrd"/>
+</A>
+	<script>
+	var myImageElement = document.getElementById('myImage');
+	myImageElement.src = 'latest.jpg?rand=' + Math.random();
+
+	setInterval(function() {
+	    var myImageElement = document.getElementById('myImage');
+    		myImageElement.src = 'latest.jpg?rand=' + Math.random();
+	}, 5000);
+	</script>
+</BODY>
 </HTML>
