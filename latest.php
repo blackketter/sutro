@@ -3,8 +3,8 @@
 <head>
 <title>Sutrocam</title>
 <style type="text/css">
-	body { background-color: black; color:#888; font: 14px/1.3 verdana, arial, helvetica, sans-serif; }
-	h1 { font-size:1.3em; }
+	body { background-color: #222; color:#888; font: 14px/1.3 verdana, arial, helvetica, sans-serif; }
+	h1 { font-size:1.4em; }
 	h2 { font-size:1.2em; }
 	a:link { color:#c33; }
 	a:visited { color:#933; }
@@ -13,6 +13,8 @@
 	/* so linked image won't have border */
 	a img { border:none; }
 	anim { width: 100px; }
+	.links { float:right;text-align:right;width:50%;	}
+	.timestamp { float:right;text-align:right;width:50%; }
 </style>
 </head>
 
@@ -50,28 +52,44 @@
 ?>
 
 <body>
-<div class="menu">
-<div style="float:left;text-align:left;width:50%">
+
+<div class="links">
+	<a href=".">index</a>
+</div>
+<p>
+<h1>Sutrocam</h1>
+
+<p></p>
+
+<h2>Last 15 minutes or so</h2>
+<div id="current-image">
+	<a href="http://sutrocam.local/sutro/latest.html"><img src="http://sutrocam.local/sutro/latest.jpg" width="100%"></a>
+</div>
+
+<div id="image-animation" class="anim"></div>
+
+<div>
     <button onclick="displayCurrent()" id="current" class="active">Latest</button>
     <button onclick="startLong()" id="longloop">Stop</button>
     <button onclick="prevLong()" id="prev">Prev</button>
     <button onclick="nextLong()" id="next">Next</button>
+	<div class="links" id="timestamp"></div>
+
 </div>
 
-<div style="float:right;text-align:right;width:50%">
-	<a href=".">index</a>
-</div>
-</div>
-<p></p>
-<div class="body">
-<div>&nbsp;</div>
-<div id="timestamp"></div>
-	    <div id="current-image">
-			<a href="http://sutrocam.local/sutro/latest.html"><img src="http://sutrocam.local/sutro/latest.jpg" width="100%"></a>
-    </div>
-    <div id="image-animation" class="anim">
-    </div>
-</div>
+
+<h2>Yesterday Lapse<a class="links" href="yesterday.log">(log)</a></h2>	 
+
+<video controls autoplay muted loop width="100%"><source src="yesterday.mp4" /></video>
+
+
+<h2>Yesterday Grid<h2>
+<a href="yesterday-grid.jpg"><img src="yesterday-grid.jpg" width="100%"></a>
+
+<h2>Yesterday Average</h2>
+<a href="yesterday-mean.jpg"><img src="yesterday-mean.jpg" width="100%"></a>
+</body>
+</html>
 
 <script>
 
@@ -186,11 +204,3 @@
 	startLong();
 
 </script>
-<p>Yesterday: <a href="yesterday.log">(log)</a>
-<video controls autoplay muted loop width="100%"><source src="yesterday.mp4" /></video>
-<p>Grid:
-<a href="yesterday-grid.jpg"><img src="yesterday-grid.jpg" width="100%"></a>
-<p>Average:
-<a href="yesterday-mean.jpg"><img src="yesterday-mean.jpg" width="100%"></a>
-</body>
-</html>
