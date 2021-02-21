@@ -10,17 +10,27 @@ mkdir -p stills/${TODAY}
 
 echo "Taking lapse at ${TODAY} ${TIME}..."
 
-raspistill -t 5000 -ex auto  -mm average -ifx denoise -q 15 -h 1080 -w 1920 -o lapse/lapse00.jpg
+raspistill -t 5000 -ex auto -awb sun -mm average -q 15 -h 1080 -w 1920 -o lapse/lapse00.jpg
+rm latest.jpg 
+ln -s lapse/lapse00.jpg latest.jpg
 sleep 3.5
-raspistill -t 5000 -ex auto  -mm average -ifx denoise -q 15 -h 1080 -w 1920 -o lapse/lapse01.jpg
+raspistill -t 5000 -ex auto -awb sun -mm average -q 15 -h 1080 -w 1920 -o lapse/lapse01.jpg
+rm latest.jpg 
+ln -s lapse/lapse01.jpg latest.jpg
 sleep 3.5
-raspistill -t 5000 -ex auto  -mm average -ifx denoise -q 15 -h 1080 -w 1920 -o lapse/lapse02.jpg
+raspistill -t 5000 -ex auto -awb sun -mm average -q 15 -h 1080 -w 1920 -o lapse/lapse02.jpg
+rm latest.jpg 
+ln -s lapse/lapse02.jpg latest.jpg
 sleep 3.5
-raspistill -t 5000 -ex auto  -mm average -ifx denoise -q 15 -h 1080 -w 1920 -o lapse/lapse03.jpg
+raspistill -t 5000 -ex auto -awb sun -mm average -q 15 -h 1080 -w 1920 -o lapse/lapse03.jpg
+rm latest.jpg 
+ln -s lapse/lapse03.jpg latest.jpg
 sleep 3.5
-raspistill -t 5000 -ex auto  -mm average -ifx denoise -q 15 -h 1080 -w 1920 -o lapse/lapse04.jpg
+raspistill -t 5000 -ex auto -awb sun -mm average -q 15 -h 1080 -w 1920 -o lapse/lapse04.jpg
+rm latest.jpg 
+ln -s lapse/lapse04.jpg latest.jpg
 sleep 3.5
-raspistill -t 5000 -ex auto  -mm average -ifx denoise -q 15 -h 1080 -w 1920 -o lapse/lapse05.jpg
+raspistill -t 5000 -ex auto -awb sun -mm average -q 15 -h 1080 -w 1920 -o lapse/lapse05.jpg
 
 for i in lapse/lapse*.jpg; do
     # Process $i
