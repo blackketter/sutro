@@ -14,7 +14,7 @@
 	a img { border:none; }
 	anim { width: 100px; }
 	.links { float:right;text-align:right;width:50%;	}
-	.timestamp { float:right;text-align:right;width:50%; }
+	.timestamp { }
 </style>
 </head>
 
@@ -69,11 +69,11 @@
 <div id="image-animation" class="anim"></div>
 
 <div>
+	<div class="timestamp" id="timestamp"></div>
     <button onclick="displayCurrent()" id="current" class="active">Latest</button>
     <button onclick="startLong()" id="longloop">Stop</button>
     <button onclick="prevLong()" id="prev">Prev</button>
     <button onclick="nextLong()" id="next">Next</button>
-	<div class="links" id="timestamp"></div>
 
 </div>
 

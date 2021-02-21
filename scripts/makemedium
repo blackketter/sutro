@@ -19,7 +19,7 @@ do
     imageroot=${image##*/}
     small=${smalldaypath}/${imageroot%.*}.jpg
     if [ ! -e ${small} ]; then
-      echo "convert -resize 50% -quality 90 ${image} ${small}"
+      echo "converting ${image} to ${small}"
       convert -resize 50% -quality 90 ${image} ${small}
 #    else
 #     echo "${small} exists"
