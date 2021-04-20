@@ -43,5 +43,5 @@ rm latest.jpg
 
 ln -s stills/${TODAY}/${D}.jpg latest.jpg
 
-rm -rf stills/${TWODAYSAGO}
+#rm -rf stills/${TWODAYSAGO}
 
