@@ -15,4 +15,10 @@ ln -s stills/${TODAY}/`ls stills/${TODAY} | tail -n 1` latest.jpg
 echo "Making medium..."
 scripts/makemedium ${TODAY}
 
+echo "Making small images..."
+scripts/makesmall ${TODAY}
+
+echo "Making day grid..."
+scripts/makedaygrid ${TODAY}
+ln -f -s daygrid/${TODAY}-grid.jpg today-grid.jpg
 date

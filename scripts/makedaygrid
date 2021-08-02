@@ -20,6 +20,6 @@ do
       echo "Skipping day grid ${GRIDFILE}, it already exists"
   else
      echo "Making day grid ${GRIDFILE}"
-     montage 160x90/${daypath}/*00?.png -geometry 160x90 -tile 12x12 ${GRIDFILE}
+     montage 160x90/${daypath}/*00?.png -background black -geometry 160x90 -tile 12x12 ${GRIDFILE}
   fi
 done

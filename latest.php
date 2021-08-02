@@ -77,13 +77,15 @@
 
 </div>
 
+<h2>Today Grid</h2>
+<a href="today-grid.jpg"><img src="today-grid.jpg" width="100%"></a>
+
 
 <h2>Yesterday Lapse<a class="links" href="yesterday.log">(log)</a></h2>	 
 
 <video controls autoplay muted loop width="100%"><source src="yesterday.mp4" /></video>
 
-
-<h2>Yesterday Grid<h2>
+<h2>Yesterday Grid</h2>
 <a href="yesterday-grid.jpg"><img src="yesterday-grid.jpg" width="100%"></a>
 
 <h2>Yesterday Average</h2>
