@@ -1,0 +1,12 @@
+#!/bin/bash
+
+i=0
+for file in *00?.jpg; do
+    echo -n "$file.. "
+    if [ $i -eq 0 ]; then
+        convert $file ~/avg.png
+    else
+        convert $file ~/avg.png -fx "(u+$i*v)/$[$i+1]" ~/avg.png
+    fi
+    i=$[$i+1]
+done
