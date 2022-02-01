@@ -61,9 +61,9 @@
 
 <p></p>
 
-<h2>Last 15 minutes or so</h2>
+<h2>Last 20 minutes or so</h2>
 <div id="current-image">
-	<a href="http://sutrocam.local/sutro/latest.html"><img src="http://sutrocam.local/sutro/latest.jpg" width="100%"></a>
+	<a href="latest.jpg"><img src="latest.jpg" width="100%"></a>
 </div>
 
 <div id="image-animation" class="anim"></div>
