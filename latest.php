@@ -2,6 +2,10 @@
 <html>
 <head>
 <title>Sutrocam</title>
+<link rel="icon" type="image/x-icon" href="/icon/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="/icon/favicon.ico">
+<link rel="icon" type="image/png" href="/icon/favicon-16x16.png">
+<link rel="icon" type="image/png" href="/icon/favicon-32x32.png">
 <style type="text/css">
 	body { background-color: #222; color:#888; font: 14px/1.3 verdana, arial, helvetica, sans-serif; }
 	h1 { font-size:1.4em; }
@@ -53,35 +57,35 @@
 
 <body>
 
-<div class="links">
-	<a href=".">index</a>
-</div>
 <p>
 <h1>Sutrocam</h1>
 
 <p></p>
 
 <h2>Last 20 minutes or so</h2>
+
+<div>
+    <button onclick="displayCurrent()" id="current" class="active">Latest</button>
+    <button onclick="startLong()" id="longloop">Start</button>
+    <button onclick="prevLong()" id="prev">Prev</button>
+    <button onclick="nextLong()" id="next">Next</button>
+    <button onclick="window.location.href='latest.mp4';" id="video" class="active">Video</video>
+</div>
+	<div class="timestamp" id="timestamp"></div>
+
 <div id="current-image">
 	<a href="latest.jpg"><img src="latest.jpg" width="100%"></a>
 </div>
 
 <div id="image-animation" class="anim"></div>
 
-<div>
-	<div class="timestamp" id="timestamp"></div>
-    <button onclick="displayCurrent()" id="current" class="active">Latest</button>
-    <button onclick="startLong()" id="longloop">Stop</button>
-    <button onclick="prevLong()" id="prev">Prev</button>
-    <button onclick="nextLong()" id="next">Next</button>
-
-</div>
-
 <h2>Today Grid</h2>
 <a href="today-grid.jpg"><img src="today-grid.jpg" width="100%"></a>
 
+<a href="today.mp4"><h2>Today Lapse</h2></a>
+<video controls autoplay muted loop width="100%"><source src="today.mp4" /></video>
 
-<h2>Yesterday Lapse<a class="links" href="yesterday.log">(log)</a></h2>	 
+<a href="yesterday.mp4"><h2>Yesterday Lapse</a> <a class="links" href="yesterday.log">(log)</a></h2>	 
 
 <video controls autoplay muted loop width="100%"><source src="yesterday.mp4" /></video>
 
@@ -203,6 +207,8 @@
             container.removeChild(container.firstChild);
         }
     }
+    
+    
 	startLong();
 
 </script>

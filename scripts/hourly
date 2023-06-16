@@ -21,4 +21,7 @@ scripts/makesmall ${TODAY}
 echo "Making day grid..."
 scripts/makedaygrid ${TODAY}
 ln -f -s daygrid/${TODAY}-grid.jpg today-grid.jpg
+
+time scripts/makelatestvideo
+
 date
