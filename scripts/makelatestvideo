@@ -18,7 +18,7 @@ if [ -f "${TODAYVIDEO}" ]; then
 	ffmpeg -y -v warning -f concat -safe 0 -i today.txt -c copy new.${TODAYVIDEO}
 else
 	echo "Creating new.${TODAYVIDEO}"
-	cp new.${OUTVIDEO} new.${TODAYVIDEO}
+	cp ${TEMPVIDEO} new.${TODAYVIDEO}
 fi
 
 # 8 seconds is (20min * 60sec/min)/(30fps * 5sec)
