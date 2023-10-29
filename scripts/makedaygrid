@@ -1,6 +1,8 @@
 #!/bin/bash
 TZ='America/Los_Angeles'; export TZ
 DAY=$1
+#SIZE=160x90
+SIZE=320x180
 
 if [ $# -eq 1 ]; then
   DAY=$1
@@ -20,6 +22,6 @@ do
       echo "Skipping day grid ${GRIDFILE}, it already exists"
   else
      echo "Making day grid ${GRIDFILE}"
-     montage 160x90/${daypath}/*00?.png -geometry 160x90 -tile 12x12 ${GRIDFILE}
+     montage ${SIZE}/${daypath}/*00?.png -background black -geometry ${SIZE} -tile 12x12 ${GRIDFILE}
   fi
 done

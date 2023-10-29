@@ -21,7 +21,14 @@ echo "Making day grid..."
 scripts/makedaygrid ${YESTERDAY}
 ln -f -s daygrid/${YESTERDAY}-grid.jpg yesterday-grid.jpg
 
+echo "Removing extra day grid..."
+rm daygrid/${YESTERDAY}-grid-1.jpg
+mv daygrid/${YESTERDAY}-grid-0.jpg daygrid/${YESTERDAY}-grid.jpg
+
 echo "Removing yesterday medium..."
 rm -r medium/${YESTERDAY}
+
+echo "Removing yesterday 320x180..."
+rm -r 320x180/${YESTERDAY}
 
 date
