@@ -2,6 +2,7 @@
 TZ='America/Los_Angeles'; export TZ
 TODAY=$(date +"%Y%m%d")
 
+FFMPEG=ffmpeg5
 FRAMES=temp.txt
 TEMPVIDEO=temp.mp4
 TODAYVIDEO=today.mp4
@@ -11,18 +12,18 @@ echo "Making latest 20 min video clip ${LATESTVIDEO} and ${TODAYVIDEO}"
 
 find stills/${TODAY} | sort | tail -n 30 | awk '{print "file", $1}' > ${FRAMES}
 
-ffmpeg -y -v warning -f concat -r 30 -i ${FRAMES} -crf 16 ${TEMPVIDEO}
+${FFMPEG} -y -v warning -f concat -r 30 -i ${FRAMES} -crf 16 ${TEMPVIDEO}
 
 if [ -f "${TODAYVIDEO}" ]; then
 	echo "Adding new.${TEMPVIDEO} to new.${TODAYVIDEO}"
-	ffmpeg -y -v warning -f concat -safe 0 -i today.txt -c copy new.${TODAYVIDEO}
+	${FFMPEG} -y -v warning -f concat -safe 0 -i today.txt -c copy new.${TODAYVIDEO}
 else
 	echo "Creating new.${TODAYVIDEO}"
 	cp ${TEMPVIDEO} new.${TODAYVIDEO}
 fi
 
 # 8 seconds is (20min * 60sec/min)/(30fps * 5sec)
-ffmpeg -y -v warning -sseof -8 -i new.${TODAYVIDEO} -c copy new.${LATESTVIDEO}
+${FFMPEG} -y -v warning -sseof -8 -i new.${TODAYVIDEO} -c copy new.${LATESTVIDEO}
 
 mv new.${TODAYVIDEO} ${TODAYVIDEO}
 
