@@ -11,27 +11,27 @@ mkdir -p stills/${TODAY}
 echo ""
 echo "Taking lapse at ${TODAY} ${TIME}..."
 
-libcamera-still --ev 1  --metering average --autofocus-mode manual --lens-position .001 --awb daylight --width 1920 --height 1080 --roi .2,.2,.6,.6  --immediate -o lapse/lapse00.jpg
+libcamera-still --quality 85 --ev 1  --metering average --autofocus-mode manual --lens-position .001 --awbgains 2.25,1.5 --width 1920 --height 1080 --roi .2,.2,.6,.6  --immediate -o lapse/lapse00.jpg
 rm latest.jpg 
 ln -s lapse/lapse00.jpg latest.jpg
 sleep 8.3
-libcamera-still --ev 1  --metering average  --autofocus-mode manual --lens-position .001  --awb daylight --width 1920 --height 1080 --roi .2,.2,.6,.6  --immediate -o lapse/lapse01.jpg
+libcamera-still --quality 85 --ev 1  --metering average  --autofocus-mode manual --lens-position .001  --awbgains 2.25,1.5 --width 1920 --height 1080 --roi .2,.2,.6,.6  --immediate -o lapse/lapse01.jpg
 rm latest.jpg 
 ln -s lapse/lapse01.jpg latest.jpg
 sleep 8.3
-libcamera-still --ev 1  --metering average  --autofocus-mode manual --lens-position .001  --awb daylight --width 1920 --height 1080 --roi .2,.2,.6,.6  --immediate -o lapse/lapse02.jpg
+libcamera-still --quality 85 --ev 1  --metering average  --autofocus-mode manual --lens-position .001  --awbgains 2.25,1.5 --width 1920 --height 1080 --roi .2,.2,.6,.6  --immediate -o lapse/lapse02.jpg
 rm latest.jpg 
 ln -s lapse/lapse02.jpg latest.jpg
 sleep 8.3
-libcamera-still --ev 1  --metering average  --autofocus-mode manual --lens-position .001  --awb daylight --width 1920 --height 1080 --roi .2,.2,.6,.6  --immediate -o lapse/lapse03.jpg
+libcamera-still --quality 85 --ev 1  --metering average  --autofocus-mode manual --lens-position .001  --awbgains 2.25,1.5 --width 1920 --height 1080 --roi .2,.2,.6,.6  --immediate -o lapse/lapse03.jpg
 rm latest.jpg 
 ln -s lapse/lapse03.jpg latest.jpg
 sleep 8.3
-libcamera-still --ev 1  --metering average  --autofocus-mode manual --lens-position .001  --awb daylight --width 1920 --height 1080 --roi .2,.2,.6,.6  --immediate -o lapse/lapse04.jpg
+libcamera-still --quality 85 --ev 1  --metering average  --autofocus-mode manual --lens-position .001  --awbgains 2.25,1.5 --width 1920 --height 1080 --roi .2,.2,.6,.6  --immediate -o lapse/lapse04.jpg
 rm latest.jpg 
 ln -s lapse/lapse04.jpg latest.jpg
 sleep 8.3
-libcamera-still --ev 1 --metering average  --autofocus-mode manual --lens-position .001  --awb daylight --width 1920 --height 1080 --roi .2,.2,.6,.6  --immediate -o lapse/lapse05.jpg
+libcamera-still --quality 85 --ev 1 --metering average  --autofocus-mode manual --lens-position .001  --awbgains 2.25,1.5 --width 1920 --height 1080 --roi .2,.2,.6,.6  --immediate -o lapse/lapse05.jpg
 
 for i in lapse/lapse*.jpg; do
     # Process $i
