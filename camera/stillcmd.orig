@@ -1,0 +1,15 @@
+#!/bin/bash
+
+libcamera-still \
+	--quality 85 \
+	--exposure sport \
+	--ev 1 \
+	--metering average \
+	--autofocus-mode manual \
+	--lens-position .001 \
+	--awbgains 2.25,1.5 \
+	--width 1920 \
+	--height 1080 \
+	--roi .2,.2,.6,.6  \
+	--immediate \
+	-o ${1}
