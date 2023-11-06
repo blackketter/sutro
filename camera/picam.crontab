@@ -21,5 +21,5 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-* * * * * cd sutro/camera; ./lapse2.sh >> lapse.log 2>&1;tail -n 100 lapse.log > lapse.latest.log
+* * * * * cd sutro/camera; ./lapse2.sh > lapse.log 2>&1; cp lapse.log lapse.prev.log
 0 2 * * * cd sutro/camera; ./cleanup.sh >> cleanup.log 2>&1
