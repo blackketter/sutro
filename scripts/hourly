@@ -5,6 +5,15 @@ TODAY=$(date +"%Y%m%d")
 date
 echo $TODAY
 
+RUNNING=${1}.hourly.running
+
+if [ -e $RUNNING ]; then
+	echo "hourly still running"
+	exit
+fi
+
+touch $RUNNING
+
 echo "Syncing..."
 rsync -axv  ${1}:sutro/stills/ stills/
 
@@ -23,5 +32,7 @@ scripts/makedaygrid ${TODAY}
 ln -f -s daygrid/${TODAY}-grid.jpg today-grid.jpg
 
 time scripts/makelatestvideo
+
+rm $RUNNING 
 
 date
