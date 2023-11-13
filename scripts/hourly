@@ -2,17 +2,19 @@
 TZ='America/Los_Angeles'; export TZ
 YESTERDAY=$(date +"%Y%m%d" --date=yesterday)
 TODAY=$(date +"%Y%m%d")
+
+echo "starting hourly"
 date
-echo $TODAY
 
 RUNNING=${1}.hourly.running
 
 if [ -e $RUNNING ]; then
-	echo "hourly still running"
+	echo "$RUNNING still running"
 	exit
 fi
 
 touch $RUNNING
+trap 'rm $RUNNING' EXIT
 
 echo "Syncing..."
 rsync -axv  ${1}:sutro/stills/ stills/
@@ -33,6 +35,5 @@ ln -f -s daygrid/${TODAY}-grid.jpg today-grid.jpg
 
 time scripts/makelatestvideo
 
-rm $RUNNING 
-
 date
+echo
