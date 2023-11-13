@@ -1,12 +1,27 @@
-Setup Notes
+Camera Setup Notes
 -----------
 
-Add:
- - add to your .bashrc:
-	export PATH=$PATH:~/sutro
- - create /var/www/html/lapse and make it writable by the user
+raspberry pi zero 2 w
+raspian bullseye 32-bit lite
 
-add to crontab -e:
+sudo apt-get update && sudo apt-get upgrade 
+sudo apt-get install apache2 git vim
 
-* * * * * cd sutro; camera/lapse.sh >> lapse.log 2>&1
+raspi-config
+  interface console on serial port
+  locale en_US
+  timezone la
 
+scp monkey.local:.ssh/id_rsa.pub authorized_keys
+
+git config --global user.name 'blackketter'
+git config --global user.password 'YOUR CLI PASSWORD'
+git clone https://blackketter@github.com/blackketter/sutro
+
+cd /var/www/html
+sudo ln -s /home/dean/sutro
+
+chmod a+rx /home/dean
+(this makes sure that apache has permissions for the full path)
+
+crontab -e with picam.crontab commands
