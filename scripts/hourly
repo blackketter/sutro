@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+
 TZ='America/Los_Angeles'; export TZ
 YESTERDAY=$(date +"%Y%m%d" --date=yesterday)
 TODAY=$(date +"%Y%m%d")
@@ -17,7 +19,7 @@ touch $RUNNING
 trap 'rm $RUNNING' EXIT
 
 echo "Syncing..."
-rsync -axv  ${1}:sutro/stills/ stills/
+rsync -axv --timeout=60 ${1}:sutro/stills/ stills/
 
 echo "Linking..."
 rm latest.jpg

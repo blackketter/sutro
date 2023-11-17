@@ -23,6 +23,7 @@
 </head>
 
 <?php
+date_default_timezone_set('America/Los_Angeles');
 	$root = "medium/";
 	$root = $root . date('Ymd');
   $filter = "/(\.gif|\.jpg|\.jpeg|\.png)$/";
@@ -36,6 +37,8 @@
 					}
 			}
 			closedir($root_dir);
+	} else {
+		echo "Can't open root " . $root;
 	}
 	sort($images);
 	sort($dates);
