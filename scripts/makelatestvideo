@@ -2,7 +2,7 @@
 TZ='America/Los_Angeles'; export TZ
 TODAY=$(date +"%Y%m%d")
 
-FFMPEG=ffmpeg5
+FFMPEG=ffmpeg
 FRAMES=temp.txt
 TEMPVIDEO=temp.mp4
 TODAYVIDEO=today.mp4
