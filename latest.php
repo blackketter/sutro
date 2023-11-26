@@ -61,17 +61,23 @@ date_default_timezone_set('America/Los_Angeles');
 <body>
 
 <p>
-<h1>Sutrocam</h1>
+<h1><a href=".">Sutrocam</a></h1>
 
 <p></p>
 
 <h2>Last 20 minutes or so</h2>
 
 <div>
-    <button onclick="displayCurrent()" id="current" class="active">Latest</button>
-    <button onclick="startLong()" id="longloop">Start</button>
+    <button onclick="firstLong()" id="first">First</button>
     <button onclick="prevLong()" id="prev">Prev</button>
+    <button onclick="startLong()" id="longloop">Start</button>
     <button onclick="nextLong()" id="next">Next</button>
+    <button onclick="lastLong()" id="last">Last</button>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+    <button onclick="displayCurrent()" id="current" class="active">Latest</button>
     <button onclick="window.location.href='latest.mp4';" id="video" class="active">Video</video>
 </div>
 	<div class="timestamp" id="timestamp"></div>
@@ -197,6 +203,23 @@ date_default_timezone_set('America/Los_Angeles');
             img_list[iterator].style.display = 'block';
             document.getElementById('timestamp').innerHTML = long_list_dates[iterator];
 			
+    }
+    function firstLong() {
+            startLong();
+            stopLong()
+            img_list[iterator].style.display = 'none';
+            iterator = 0;
+            img_list[iterator].style.display = 'block';
+            document.getElementById('timestamp').innerHTML = long_list_dates[iterator];
+    }
+    function lastLong() {
+            startLong();
+            stopLong()
+            img_list[iterator].style.display = 'none';
+            iterator = long_list_dates.length - 1;
+
+            img_list[iterator].style.display = 'block';
+            document.getElementById('timestamp').innerHTML = long_list_dates[iterator];
     }
 
     function displayCurrent() {
