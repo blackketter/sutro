@@ -1,6 +1,6 @@
 #!/bin/bash
 TZ='America/Los_Angeles'; export TZ
-DAYSAGO=$(date +"%Y%m%d" --date="-14 days")
+DAYSAGO=$(date +"%Y%m%d" --date="-7 days")
 
 rm -rf ../stills/${DAYSAGO}
 
