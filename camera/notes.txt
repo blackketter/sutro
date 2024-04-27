@@ -12,6 +12,9 @@ raspi-config
   locale en_US
   timezone la
 
+add to /etc/rc.local the line to disable wifi power save:
+	/sbin/iw wlan0 set power_save off
+
 scp monkey.local:.ssh/id_rsa.pub authorized_keys
 
 git config --global user.name 'blackketter'

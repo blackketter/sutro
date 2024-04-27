@@ -1,16 +1,32 @@
 #!/bin/bash
+set -euo pipefail
+
 TZ='America/Los_Angeles'; export TZ
 YESTERDAY=$(date +"%Y%m%d" --date=yesterday)
 TODAY=$(date +"%Y%m%d")
+
+echo "starting hourly"
 date
-echo $TODAY
+
+RUNNING=${1}.hourly.running
+
+if [ -e $RUNNING ]; then
+	echo "$RUNNING still running"
+	exit
+fi
+
+touch $RUNNING
+trap 'rm $RUNNING' EXIT
 
 echo "Syncing..."
-rsync -axv  ${1}:sutro/stills/ stills/
+rsync -axv --timeout=60 ${1}:sutro/stills/ stills/
 
 echo "Linking..."
 rm latest.jpg
 ln -s stills/${TODAY}/`ls stills/${TODAY} | tail -n 1` latest.jpg
+
+echo "Making 800x480..."
+scripts/makesize 800x480 ${TODAY}
 
 echo "Making medium..."
 scripts/makemedium ${TODAY}
@@ -25,3 +41,4 @@ ln -f -s daygrid/${TODAY}-grid.jpg today-grid.jpg
 time scripts/makelatestvideo
 
 date
+echo
