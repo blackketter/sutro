@@ -1,4 +1,5 @@
 #!/bin/bash
+pkill -f libcamera-still
 
 libcamera-still \
 	--quality 85 \
