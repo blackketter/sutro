@@ -16,85 +16,93 @@
     button { color:#888; background-color:#222; }
 	/* so linked image won't have border */
 	a img { border:none; }
-	anim { width: 100px; }
+	anim { width: 100%; }
 	.links { float:right;text-align:right;width:50%;	}
 	.timestamp { }
 </style>
 </head>
 
 <?php
-date_default_timezone_set('America/Los_Angeles');
-	$root = "medium/";
-	$root = $root . date('Ymd');
-  $filter = "/(\.gif|\.jpg|\.jpeg|\.png)$/";
-  $imagecount = 120;
-
-	if ( $root_dir = @opendir($root) ) {
-			while ( false !== ($img_file = readdir($root_dir)) ) {
-						if ( preg_match($filter, $img_file) ) {
-							$images[] = $root . "/" . $img_file;
-							$dates[] = $img_file;
-					}
-			}
-			closedir($root_dir);
-	} else {
-		echo "Can't open root " . $root;
-	}
-	sort($images);
-	sort($dates);
-	$images = array_slice($images, -$imagecount);
-    $dates = array_slice($dates, -$imagecount);
-	function printImages() {
-		global $images;
-		foreach ($images as $image) {
-			echo "'" . $image . "',\n";
-		}
-	}
-	function printDates() {
-		global $dates;
-		foreach ($dates as $date) {
-			echo "'" . $date . "',\n";
-		}
-	}
+  date_default_timezone_set('America/Los_Angeles');
+  $today = date("Ymd");
+  $thedate = $_GET['date'];
+  if (!$thedate) {
+    $thedate = $today;
+  }
 ?>
 
 <body>
 
 <p>
-<h1><a href=".">Sutrocam</a></h1>
+<h1><a href=".">Sutrocam <?php if ($thedate != $today) { echo $thedate; } ?></a></h1>
 
-<p></p>
+<?php
+  if ($thedate == $today):
+    $root = "medium/";
+    $root = $root . $thedate;
+    $filter = "/(\.gif|\.jpg|\.jpeg|\.png)$/";
+    $imagecount = 120;
+    if ( $root_dir = @opendir($root) ) {
+        while ( false !== ($img_file = readdir($root_dir)) ) {
+              if ( preg_match($filter, $img_file) ) {
+                $images[] = $root . "/" . $img_file;
+                $dates[] = $img_file;
+            }
+        }
+        closedir($root_dir);
+    } else {
+      echo "Can't open root " . $root;
+    }
+    sort($images);
+    sort($dates);
+    $images = array_slice($images, -$imagecount);
+      $dates = array_slice($dates, -$imagecount);
+    function printImages() {
+      global $images;
+      foreach ($images as $image) {
+        echo "'" . $image . "',\n";
+      }
+    }
+    function printDates() {
+      global $dates;
+      foreach ($dates as $date) {
+        echo "'" . $date . "',\n";
+      }
+    }
+?>
 
-<h2>Last 20 minutes or so</h2>
+  <a href="latest.mp4"><h2>Last 20 Minutes Or So</h2></a>
+  <video controls autoplay muted loop width="100%"><source src="latest.mp4" /></video>
 
-<div>
-    <button onclick="firstLong()" id="first">First</button>
-    <button onclick="prevLong()" id="prev">Prev</button>
-    <button onclick="startLong()" id="longloop">Start</button>
-    <button onclick="nextLong()" id="next">Next</button>
-    <button onclick="lastLong()" id="last">Last</button>
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-    <button onclick="displayCurrent()" id="current" class="active">Latest</button>
-    <button onclick="window.location.href='latest.mp4';" id="video" class="active">Video</video>
-</div>
-	<div class="timestamp" id="timestamp"></div>
+  <h2>Latest</h2>
 
-<div id="current-image">
-	<a href="latest.jpg"><img src="latest.jpg" width="100%"></a>
-</div>
+  <div>
+      <button onclick="displayCurrent()" id="current" class="active">Latest</button>
+  &nbsp;
+      <button onclick="firstLong()" id="first">First</button>
+      <button onclick="prevLong()" id="prev">Prev</button>
+      <button onclick="startLong()" id="longloop">Start</button>
+      <button onclick="nextLong()" id="next">Next</button>
+      <button onclick="lastLong()" id="last">Last</button>
+      <!--<button onclick="window.location.href='latest.mp4';" id="video" class="active">Video</button>-->
+  </div>
+  <div class="timestamp" id="timestamp"></div>
 
-<div id="image-animation" class="anim"></div>
+  <div id="current-image">
+    <a href="latest.jpg"><img src="latest.jpg" width="100%"></a>
+  </div>
 
-<h2>Today Grid</h2>
+  <div id="image-animation" class="anim"></div>
+
+<?php endif; ?>
+
+<h2>Grid</h2>
 <a href="today-grid.jpg"><img src="today-grid.jpg" width="100%"></a>
 
-<a href="today.mp4"><h2>Today Lapse</h2></a>
+<a href="today.mp4"><h2>Today</h2></a>
 <video controls autoplay muted loop width="100%"><source src="today.mp4" /></video>
 
-<a href="yesterday.mp4"><h2>Yesterday Lapse</a> <a class="links" href="yesterday.log">(log)</a></h2>	 
+<a href="yesterday.mp4"><h2>Yesterday</a> <a class="links" href="yesterday.log">(log)</a></h2>
 
 <video controls autoplay muted loop width="100%"><source src="yesterday.mp4" /></video>
 
@@ -150,6 +158,7 @@ date_default_timezone_set('America/Los_Angeles');
             if (i != 0) {
                 img_list[i].style.display = 'none';
             }
+            img_list[i].style.width = '100%';
             container.append(img_list[i]);
         }
 
@@ -202,7 +211,7 @@ date_default_timezone_set('America/Los_Angeles');
 
             img_list[iterator].style.display = 'block';
             document.getElementById('timestamp').innerHTML = long_list_dates[iterator];
-			
+
     }
     function firstLong() {
             startLong();
@@ -233,8 +242,8 @@ date_default_timezone_set('America/Los_Angeles');
             container.removeChild(container.firstChild);
         }
     }
-    
-    
-	startLong();
 
+
+//	startLong();
+  displayLatest();
 </script>

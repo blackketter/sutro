@@ -1,11 +1,12 @@
 #!/bin/bash
 DIMENSION=$1
+CROP=$2
 LAPSEPREFIX=.
 STILLSPREFIX=${LAPSEPREFIX}/stills
 SMALLPREFIX=${LAPSEPREFIX}/${DIMENSION}
 
-if [ $# -eq 2 ]; then
-  DAY=$2
+if [ $# -eq 3 ]; then
+  DAY=$3
 else
   DAY=20*
 fi
@@ -22,7 +23,7 @@ do
     small=${smalldaypath}/${imageroot%.*}.jpg
     if [ ! -e ${small} ]; then
       echo "converting ${image} to ${small}"
-      convert -crop '1800x1080+0+0' -resize ${DIMENSION} -gravity center ${image} ${small}
+      convert -crop $CROP -resize ${DIMENSION} -gravity center ${image} ${small}
 #    else
 #     echo "${small} exists"
     fi

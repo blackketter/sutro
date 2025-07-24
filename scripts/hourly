@@ -26,7 +26,10 @@ rm latest.jpg
 ln -s stills/${TODAY}/`ls stills/${TODAY} | tail -n 1` latest.jpg
 
 echo "Making 800x480..."
-scripts/makesize 800x480 ${TODAY}
+scripts/makesize 800x480 1800x1080+0+0 ${TODAY}
+
+echo "Making 1280x800..."
+scripts/makesize 1280x800 1726x1080+0+0 ${TODAY}
 
 echo "Making medium..."
 scripts/makemedium ${TODAY}

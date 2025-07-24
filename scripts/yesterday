@@ -33,4 +33,8 @@ rm -r 320x180/${YESTERDAY}
 
 echo "Removing yesterday 800x480..."
 rm -r 800x480/${YESTERDAY}
+
+echo "Removing yesterday 1280x800..."
+rm -r 1280x800/${YESTERDAY}
+
 date

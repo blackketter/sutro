@@ -7,7 +7,7 @@ raspian bullseye 32-bit lite
 sudo apt-get update && sudo apt-get upgrade 
 sudo apt-get install apache2 git vim
 
-raspi-config
+sudo raspi-config
   interface console on serial port
   locale en_US
   timezone la
@@ -28,3 +28,5 @@ chmod a+rx /home/dean
 (this makes sure that apache has permissions for the full path)
 
 crontab -e with picam.crontab commands
+
+THAT IS ALL
